@@ -1171,8 +1171,8 @@ module openconfig-interfaces {
       type oc-yang:counter64;
       description
         "The number of inbound packets received on the subinterface that
-        were dropped due to an expired Time-To-Live (TTL) or Hop Limit upon
-        routing lookup, indicating TTL expiration or routing loops.
+        were dropped due to an expired Time-To-Live (TTL) or Hop Limit during
+        transit forwarding, indicating TTL expiration or routing loops.
 
         Discontinuities in the value of this counter can occur
         at re-initialization of the management system, and at
