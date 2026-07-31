@@ -55,7 +55,7 @@ module openconfig-interfaces {
 
   revision "2026-07-15" {
       description
-        "Add ingress low-TTL discard counter to subinterface counters.";
+        "Add ingress low-TTL discard counter to interface and subinterface counters.";
       reference
         "3.9.0";
   }
@@ -1013,6 +1013,18 @@ module openconfig-interfaces {
         the Unix Epoch (Jan 1, 1970 00:00:00 UTC).";
       oc-ext:telemetry-on-change;
     }
+
+    leaf in-low-ttl-discards {
+      type oc-yang:counter64;
+      description
+        "The number of inbound packets received on the interface or subinterface that
+        were dropped due to an expired Time-To-Live (TTL) or Hop Limit during
+        transit forwarding, indicating TTL expiration or routing loops.
+
+        Discontinuities in the value of this counter can occur
+        at re-initialization of the management system, and at
+        other times as indicated by the value of 'last-clear'.";
+    }
   }
 
   grouping interface-counters-state {
@@ -1165,18 +1177,6 @@ module openconfig-interfaces {
         between up and down since the time the device restarted
         or the last-clear time, whichever is most recent.";
       oc-ext:telemetry-on-change;
-    }
-
-    leaf in-low-ttl-discards {
-      type oc-yang:counter64;
-      description
-        "The number of inbound packets received on the subinterface that
-        were dropped due to an expired Time-To-Live (TTL) or Hop Limit during
-        transit forwarding, indicating TTL expiration or routing loops.
-
-        Discontinuities in the value of this counter can occur
-        at re-initialization of the management system, and at
-        other times as indicated by the value of 'last-clear'.";
     }
 
   }
